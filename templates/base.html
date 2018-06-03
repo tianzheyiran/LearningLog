@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>学习笔记</title>
+
+</head>
+<body>
+    <p>
+        <a href="{% url "index" %}">学习日志</a> - <a href="{% url "topics" %}">主题</a>-
+        {% if user.is_authenticated %}
+{#            登录成功后,is_authenticate 属性为true,未登录 属性为false#}
+         hello,{{ user.username }}
+            <a href="{% url "logout" %}">注销</a>
+        {% else %}
+         <a href="{% url "login" %}">登录</a>
+         <a href="{% url "register" %}">注册</a>
+        {% endif %}
+    </p>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

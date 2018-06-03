@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <p>主题</p>
+    <ul>
+        {% for t in topics %}
+        {#  topics 是topics_view视图中传过来的 topics 是一个queryset #}
+
+        <li><a href="{% url "topic" t.id %}">{{ t.text }}</a></li>
+        {% empty %}
+            <li>没有任何主题</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'new_topic' %}">添加一个主题</a>
+{% endblock content %}

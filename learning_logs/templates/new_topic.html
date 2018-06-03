@@ -1,0 +1,10 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <p>添加一个新的主题:</p>
+    <form action="{% url 'new_topic' %}" method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">add topic</button>
+    </form>
+{% endblock content %}
